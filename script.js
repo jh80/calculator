@@ -37,3 +37,11 @@ function operate(num1, operator, num2) {
             break;
     }
 }
+
+// Populate display function
+const display = document.querySelector("#display");
+let displayValue = display.textContent;
+
+function populateDisplay(digitStr, displayValue = '') {
+    display.textContent = displayValue + digitStr;
+}
