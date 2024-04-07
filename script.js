@@ -44,4 +44,5 @@ let displayValue = display.textContent;
 
 function populateDisplay(digitStr, displayValue = '') {
     display.textContent = displayValue + digitStr;
+    return display.textContent;
 }
