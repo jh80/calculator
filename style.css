@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+#calculatorFrame {
+    background-color: #a2d2c2;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+}
+
+#btnContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+#display {
+    background-color: #c1bbbb;
+    height: 58px;
+}
+
+.btn {
+    width: 58px;
+    height: 58px;
+}
+
+.filler {
+    visibility: hidden;
+}
