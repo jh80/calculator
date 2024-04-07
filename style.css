@@ -9,6 +9,14 @@ body {
     margin: auto;
 }
 
+#display {
+    background-color: #c1bbbb;
+    height: 58px;
+    font-size: 40px;
+    text-align: right;
+    justify-content: flex-end;
+}
+
 #btnContainer {
     display: flex;
     justify-content: space-evenly;
@@ -16,10 +24,6 @@ body {
     gap: 3px;
 }
 
-#display {
-    background-color: #c1bbbb;
-    height: 58px;
-}
 
 .btn {
     width: 58px;
