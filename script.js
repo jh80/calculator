@@ -61,14 +61,18 @@ function activateButton (event) {
         displayValue = populateDisplay(target.textContent, displayValue);
     }
     if (target.className === "btn operator") {
-        num2 = Number(display.textContent);
-        num1 = operate(num1, operator, num2);
-        operator = target.textContent;
-        display.textContent = num1;
+        runEquationThroughCalc(target);
         displayValue = "";
     }
 }
 
+// They say not to do multiple things in, I did here. it runs the right equation and displays it
+function runEquationThroughCalc(target) {
+    num2 = Number(display.textContent);
+    num1 = operate(num1, operator, num2);
+    operator = target.textContent;
+    display.textContent = num1;
+}
 
 
 
