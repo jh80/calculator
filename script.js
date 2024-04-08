@@ -80,6 +80,11 @@ function activateButton (event) {
         display.textContent = num1;
         num1 = undefined;
         displayValue = "";        
+    } else if (target.id === "clear") {
+        num1 = undefined;
+        num2 = undefined;
+        operator = "";
+        display.textContent = "0";
     }
 }
 
