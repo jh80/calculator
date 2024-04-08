@@ -46,7 +46,7 @@ function populateDisplay(digitStr, displayValue = '') {
     display.textContent = displayValue + digitStr;
     // this may be unnecessary?
     return display.textContent;
-}
+}                 
 
 function pressButton (event) {
     const target = event.target;
@@ -60,3 +60,28 @@ function pressButton (event) {
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener('click', pressButton);
+
+// Operator functions
+// USES GLOBAL VARIABLES and DOES MORE THAN ONE THING
+function evaluateOperatorProcedure(event) {
+    num2 = display.textContent;
+    // Apply appropriate operation
+    switch(operator) {
+        case '+':
+            num1 = add(num1, num2);
+            break;
+        case '-':
+            num1 = subtract(num1, num2);
+            break;
+        case 'x':
+            num1 = multiply(num1, num2);
+            break;
+        case '÷':
+            num1 = divide(num1, num2);
+            break;
+    }
+    operator = event.target.textContent;
+
+}
+
+
