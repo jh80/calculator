@@ -54,3 +54,6 @@ function pressButton (event) {
     populateDisplay(target.textContent, displayValue);
 }
 
+// Button click event
+const btnContainer = document.querySelector("#btnContainer");
+btnContainer.addEventListener('click', pressButton);
