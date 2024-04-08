@@ -48,7 +48,7 @@ function populateDisplay(digitStr, displayValue = '') {
     return display.textContent;
 }                 
 
-function pressButton (event) {
+function activateButton (event) {
     const target = event.target;
     displayValue = display.textContent;
     if (target.className === "btn number") {
@@ -59,7 +59,7 @@ function pressButton (event) {
 
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
-btnContainer.addEventListener('click', pressButton);
+btnContainer.addEventListener('click', activateButton);
 
 // Operator functions
 // USES GLOBAL VARIABLES and DOES MORE THAN ONE THING
