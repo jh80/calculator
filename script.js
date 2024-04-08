@@ -29,10 +29,10 @@ function operate(num1, operator, num2) {
         case "-":
             return subtract(num1,num2);
             break;
-        case "*":
+        case "x":
             return multiply(num1,num2);
             break;
-        case "/":
+        case "÷":
             return divide(num1,num2);
             break;
     }
@@ -56,21 +56,6 @@ function activateButton (event) {
     }
     if (target.className === "btn operator") {
         num2 = display.textContent;
-        // Apply appropriate operation
-        switch(operator) {
-            case '+':
-                num1 = add(num1, num2);
-                break;
-            case '-':
-                num1 = subtract(num1, num2);
-                break;
-            case 'x':
-                num1 = multiply(num1, num2);
-                break;
-            case '÷':
-                num1 = divide(num1, num2);
-                break;
-        }
         operator = target.textContent;
         displayValue = "";
     }
