@@ -51,7 +51,10 @@ function populateDisplay(digitStr, displayValue = '') {
 function pressButton (event) {
     const target = event.target;
     displayValue = display.textContent;
-    populateDisplay(target.textContent, displayValue);
+    if (target.className === "btn number") {
+        populateDisplay(target.textContent, displayValue);
+    }
+    
 }
 
 // Button click event
