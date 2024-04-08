@@ -1,7 +1,7 @@
 // Operation variables
-let num1 = 0;
+let num1;
 let num2;
-let operator = "+";
+let operator;
 
 const display = document.querySelector("#display");
 let displayValue = display.textContent;
@@ -42,6 +42,8 @@ function operate(num1, operator, num2) {
         case "÷":
             return divide(num1,num2);
             break;
+        case "=":
+            return num1
     }
 }
 
@@ -60,9 +62,23 @@ function activateButton (event) {
     if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
     } else if (target.className === "btn operator") {
-        runEquationThroughCalc(target);
-        displayValue = "";
-    } else if (target.id === "equals")
+        if (num1 === undefined) {
+            num1 = display.textContent;
+            displayValue = "";
+        } else {
+            num2 = display.textContent;
+            operator = target.textContent
+            num1 = operate(num1, operator, num2);
+            display.textContent = num1;
+            displayValue = "";
+        }
+    } else if (target.id === "equals") {
+        num2 = Number(display.textContent);
+        num1 = operate(num1, operator, num2);
+        operator = "+";
+        display.textContent = num1;
+        displayValue = "";        
+    }
 }
 
 // They say not to do multiple things in, I did here. it runs the right equation and displays it
@@ -71,7 +87,5 @@ function runEquationThroughCalc(target) {
     num1 = operate(num1, operator, num2);
     operator = target.textContent;
     display.textContent = num1;
+    displayValue = "";
 }
-
-
-
