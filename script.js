@@ -62,6 +62,7 @@ function activateButton (event) {
         num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = target.textContent;
+        display.textContent = num1;
         displayValue = "";
     }
 }
