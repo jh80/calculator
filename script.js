@@ -54,34 +54,30 @@ function activateButton (event) {
     if (target.className === "btn number") {
         populateDisplay(target.textContent, displayValue);
     }
-    
+    if (target.className === "btn operator") {
+        num2 = display.textContent;
+        // Apply appropriate operation
+        switch(operator) {
+            case '+':
+                num1 = add(num1, num2);
+                break;
+            case '-':
+                num1 = subtract(num1, num2);
+                break;
+            case 'x':
+                num1 = multiply(num1, num2);
+                break;
+            case '÷':
+                num1 = divide(num1, num2);
+                break;
+        }
+        operator = target.textContent;
+        displayValue = "";
+    }
 }
 
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener('click', activateButton);
-
-// Operator functions
-// USES GLOBAL VARIABLES and DOES MORE THAN ONE THING
-function evaluateOperatorProcedure(event) {
-    num2 = display.textContent;
-    // Apply appropriate operation
-    switch(operator) {
-        case '+':
-            num1 = add(num1, num2);
-            break;
-        case '-':
-            num1 = subtract(num1, num2);
-            break;
-        case 'x':
-            num1 = multiply(num1, num2);
-            break;
-        case '÷':
-            num1 = divide(num1, num2);
-            break;
-    }
-    operator = event.target.textContent;
-
-}
 
 
