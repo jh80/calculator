@@ -1,3 +1,15 @@
+// Operation variables
+let num1 = 0;
+let num2;
+let operator = "+";
+
+const display = document.querySelector("#display");
+let displayValue = display.textContent;
+
+// Button click event
+const btnContainer = document.querySelector("#btnContainer");
+btnContainer.addEventListener('click', activateButton);
+
 // Operator functions
 function add(num1, num2) {
     return num1 + num2;
@@ -14,11 +26,6 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
     return num1/num2;
 }
-
-// Operation variables
-let num1 = 0;
-let num2;
-let operator = "+";
 
 // operate function
 function operate(num1, operator, num2) {
@@ -37,10 +44,6 @@ function operate(num1, operator, num2) {
             break;
     }
 }
-
-// Populate display function
-const display = document.querySelector("#display");
-let displayValue = display.textContent;
 
 function populateDisplay(digitStr, displayValue = '') {
     display.textContent = displayValue + digitStr;
@@ -62,8 +65,6 @@ function activateButton (event) {
     }
 }
 
-// Button click event
-const btnContainer = document.querySelector("#btnContainer");
-btnContainer.addEventListener('click', activateButton);
+
 
 
