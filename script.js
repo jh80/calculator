@@ -18,7 +18,7 @@ function divide(num1, num2) {
 // Operation variables
 let num1 = 0;
 let num2;
-let operator;
+let operator = "+";
 
 // operate function
 function operate(num1, operator, num2) {
