@@ -63,10 +63,10 @@ function activateButton (event) {
         displayValue = populateDisplay(target.textContent, displayValue);
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
-            num1 = display.textContent;
+            num1 = Number(display.textContent);
             displayValue = "";
         } else {
-            num2 = display.textContent;
+            num2 = Number(display.textContent);
             operator = target.textContent
             num1 = operate(num1, operator, num2);
             display.textContent = num1;
