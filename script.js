@@ -55,7 +55,7 @@ function activateButton (event) {
         displayValue = populateDisplay(target.textContent, displayValue);
     }
     if (target.className === "btn operator") {
-        num2 = display.textContent;
+        num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = target.textContent;
         displayValue = "";
