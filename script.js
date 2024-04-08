@@ -59,11 +59,10 @@ function activateButton (event) {
     //displayValue = display.textContent;
     if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
-    }
-    if (target.className === "btn operator") {
+    } else if (target.className === "btn operator") {
         runEquationThroughCalc(target);
         displayValue = "";
-    }
+    } else if (target.id === "equals")
 }
 
 // They say not to do multiple things in, I did here. it runs the right equation and displays it
