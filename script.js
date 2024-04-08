@@ -50,12 +50,13 @@ function populateDisplay(digitStr, displayValue = '') {
 
 function activateButton (event) {
     const target = event.target;
-    displayValue = display.textContent;
+    //displayValue = display.textContent;
     if (target.className === "btn number") {
-        populateDisplay(target.textContent, displayValue);
+        displayValue = populateDisplay(target.textContent, displayValue);
     }
     if (target.className === "btn operator") {
         num2 = display.textContent;
+        num1 = operate(num1, operator, num2);
         operator = target.textContent;
         displayValue = "";
     }
