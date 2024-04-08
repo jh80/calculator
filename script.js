@@ -46,6 +46,7 @@ function operate(num1, operator, num2) {
 }
 
 function populateDisplay(digitStr, displayValue = '') {
+    if (displayValue === "0") return;
     display.textContent = displayValue + digitStr;
     // this may be unnecessary?
     return display.textContent;
