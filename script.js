@@ -64,11 +64,12 @@ function activateButton (event) {
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
             num1 = Number(display.textContent);
+            operator = target.textContent;
             displayValue = "";
         } else {
             num2 = Number(display.textContent);
-            operator = target.textContent
             num1 = operate(num1, operator, num2);
+            operator = target.textContent;
             display.textContent = num1;
             displayValue = "";
         }
