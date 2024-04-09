@@ -84,6 +84,7 @@ function activateButton (event) {
     } else if (target.id === "clear") {
         num1 = undefined;
         num2 = undefined;
+        displayValue = "";
         operator = "";
         display.textContent = "0";
     }
