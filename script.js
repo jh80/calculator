@@ -111,7 +111,7 @@ function roundToDigits(num, digits = 0, notice = NaN) {
         const parts = stringNum.split(".")
         const decimalPlaces = digits - parts[0].length;
         return (num.toFixed(decimalPlaces));
-    } else if (stringNum.length > 13) {
+    } else if (stringNum.length > digits) {
         return notice;
     } else {
         return num;
