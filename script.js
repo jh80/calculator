@@ -47,11 +47,12 @@ function operate(num1, operator, num2) {
     }
 }
 
-function populateDisplay(digitStr, displayValue = '') {
+function populateDisplay(digitStr, displayValue = "") {
     let newDisplayValue;
     if (displayValue === "0") {
         displayValue = "";
     };
+    if ((digitStr === ".") && (displayValue == "")) digitStr = "0.";
     newDisplayValue = displayValue + digitStr;
     if (newDisplayValue.length > 13 && !digitStr.includes(".")) {
         display.textContent = tooBigMsg
@@ -64,7 +65,7 @@ function populateDisplay(digitStr, displayValue = '') {
 function activateButton (event) {
     const target = event.target;
     //displayValue = display.textContent;
-    if (target.className === "btn number") {
+    if (target.className === "btn number" || target.id === "decimalPoint") {
         displayValue = populateDisplay(target.textContent, displayValue);
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
