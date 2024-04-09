@@ -6,7 +6,7 @@ let operator;
 const display = document.querySelector("#display");
 let displayValue = display.textContent;
 
-const tooBigMsg = "# TOO BIG";
+const tooBigMsg = " #  TOO  BIG ";
 const displayFit = 13;
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
