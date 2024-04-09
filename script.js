@@ -42,8 +42,6 @@ function operate(num1, operator, num2) {
         case "÷":
             return divide(num1,num2);
             break;
-        case "=":
-            return num1
     }
 }
 
