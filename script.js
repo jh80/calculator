@@ -72,6 +72,9 @@ function activateButton (event) {
             displayValue = "";
         }
     } else if (target.id === "equals") {
+        if (num1 === undefined) {
+            return;
+        }
         num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = "";
