@@ -6,7 +6,8 @@ let operator;
 const display = document.querySelector("#display");
 let displayValue = display.textContent;
 
-const tooBigMsg = "# TOO BIG"
+const tooBigMsg = "# TOO BIG";
+const displayFit = 13;
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener('click', activateButton);
@@ -50,10 +51,11 @@ function populateDisplay(digitStr, displayValue = '') {
     if (displayValue === "0") {
         displayValue = "";
     };
-    display.textContent = displayValue + digitStr;
-    if (display.textContent.length > 13) {
+    if (digitStr.length > 13) {
+        display.textContent = tooBigMsg
         return tooBigMsg;
     }
+    display.textContent = displayValue + digitStr;
     return display.textContent;
 }                 
 
@@ -71,7 +73,7 @@ function activateButton (event) {
             num2 = Number(display.textContent);
             num1 = operate(num1, operator, num2);
             operator = target.textContent;
-            display.textContent = num1;
+            populateDisplay(String(num1));
             displayValue = "";
         }
     } else if (target.id === "equals") {
@@ -81,7 +83,7 @@ function activateButton (event) {
         num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = "";
-        display.textContent = num1;
+        populateDisplay(String(num1));
         num1 = undefined;
         displayValue = "";        
     } else if (target.id === "clear") {
@@ -89,7 +91,7 @@ function activateButton (event) {
         num2 = undefined;
         displayValue = "";
         operator = "";
-        display.textContent = "0";
+        populateDisplay("0");
     }
 }
 
