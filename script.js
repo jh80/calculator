@@ -48,14 +48,16 @@ function operate(num1, operator, num2) {
 }
 
 function populateDisplay(digitStr, displayValue = '') {
+    let newDisplayValue;
     if (displayValue === "0") {
         displayValue = "";
     };
-    if (digitStr.length > 13) {
+    newDisplayValue = displayValue + digitStr;
+    if (newDisplayValue.length > 13 && !digitStr.includes(".")) {
         display.textContent = tooBigMsg
         return tooBigMsg;
     }
-    display.textContent = displayValue + digitStr;
+    display.textContent = newDisplayValue;
     return display.textContent;
 }                 
 
@@ -73,7 +75,7 @@ function activateButton (event) {
             num2 = Number(display.textContent);
             num1 = operate(num1, operator, num2);
             operator = target.textContent;
-            populateDisplay(String(num1));
+            populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
             displayValue = "";
         }
     } else if (target.id === "equals") {
@@ -83,7 +85,7 @@ function activateButton (event) {
         num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = "";
-        populateDisplay(String(num1));
+        populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
         num1 = undefined;
         displayValue = "";        
     } else if (target.id === "clear") {
