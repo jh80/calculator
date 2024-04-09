@@ -6,6 +6,7 @@ let operator;
 const display = document.querySelector("#display");
 let displayValue = display.textContent;
 
+const tooBigMsg = "# TOO BIG"
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener('click', activateButton);
@@ -50,7 +51,9 @@ function populateDisplay(digitStr, displayValue = '') {
         displayValue = "";
     };
     display.textContent = displayValue + digitStr;
-    // this may be unnecessary?
+    if (display.textContent.length > 13) {
+        return tooBigMsg;
+    }
     return display.textContent;
 }                 
 
@@ -97,4 +100,18 @@ function runEquationThroughCalc(target) {
     operator = target.textContent;
     display.textContent = num1;
     displayValue = "";
+}
+
+function roundToDigits(num, digits = 0, notice = NaN) {
+    // For my needs digits should be 13
+    const stringNum = String(num);
+    if (stringNum.includes(".")) { 
+        const parts = stringNum.split(".")
+        const decimalPlaces = digits - parts[0].length;
+        return (num.toFixed(decimalPlaces));
+    } else if (stringNum.length > 13) {
+        return notice;
+    } else {
+        return num;
+    }
 }
