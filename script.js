@@ -66,8 +66,13 @@ function populateDisplay(digitStr, displayValue = "") {
 function activateButton (event) {
     const target = event.target;
     //displayValue = display.textContent;
-    if (target.className === "btn number" || target.id === "decimalPoint") {
+    if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
+    } else if (target.id === "decimalPoint") {
+        if (displayValue.includes(".")) {
+            return;
+        }
+        displayValue = populateDisplay(".", displayValue);
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
             num1 = Number(display.textContent);
