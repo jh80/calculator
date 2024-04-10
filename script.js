@@ -117,14 +117,6 @@ function roundToDigits(num, digits = 0, notice = NaN) {
         const parts = stringNum.split(".")
         const decimalPlaces = digits - parts[0].length;
         roundedStrNum = String(num.toFixed(decimalPlaces));
-        // remove excess zeros - Bring this back only if I need it
-        while (roundedStrNum.slice(-1) === "0") {
-            if (roundedStrNum.slice(-1) === ".") {
-                roundedStrNum = roundedStrNum.slice(0, -1);
-                break;
-            } 
-            roundedStrNum = roundedStrNum.slice(0, -1);
-        } 
         return Number(roundedStrNum);
     } else if (stringNum.length > digits) {
         return notice;
