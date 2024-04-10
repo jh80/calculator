@@ -26,6 +26,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+       return "Attempted divide by 0";
+    }
     return num1/num2;
 }
 
@@ -92,6 +95,14 @@ function activateButton (event) {
         num2 = Number(display.textContent);
         num1 = operate(num1, operator, num2);
         operator = "";
+        if (num1 === "Attempted divide by 0") {
+            populateDisplay("Stop that!");
+            num1 = undefined;
+            num2 = undefined;
+            displayValue = "";
+            operator = "";
+            return;
+        }
         populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
         num1 = undefined;
         displayValue = "";        
