@@ -126,6 +126,8 @@ function activateButton (event) {
         displayValue = "";
         operator = "";
         populateDisplay("0");
+    } else if (target.id === "backspace") {
+        displayValue = populateDisplay(display.textContent.slice(0,-1));
     }
 }
 
