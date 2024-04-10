@@ -5,6 +5,7 @@ let operator;
 
 const display = document.querySelector("#display");
 let displayValue = display.textContent;
+let backspace = true;
 
 const tooBigMsg = " #  TOO  BIG ";
 const displayFit = 13;
@@ -76,6 +77,7 @@ function activateButton (event) {
     //displayValue = display.textContent;
     if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
+        backspace = true;
     } else if (target.id === "decimalPoint") {
         if (displayValue.includes(".")) {
             return;
@@ -101,6 +103,7 @@ function activateButton (event) {
             }
             populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
             displayValue = "";
+            backspace = false;
         }
     } else if (target.id === "equals") {
         if (num1 === undefined) {
@@ -119,7 +122,8 @@ function activateButton (event) {
         }
         populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
         num1 = undefined;
-        displayValue = "";        
+        displayValue = "";  
+        backspace = false;    
     } else if (target.id === "clear") {
         num1 = undefined;
         num2 = undefined;
@@ -127,6 +131,7 @@ function activateButton (event) {
         operator = "";
         populateDisplay("0");
     } else if (target.id === "backspace") {
+        if(backspace)
         displayValue = populateDisplay(display.textContent.slice(0,-1));
     }
 }
