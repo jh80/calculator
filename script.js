@@ -139,7 +139,7 @@ function runEquationThroughCalc(target) {
 }
 
 // Rounds number to a specified amount of digits (on both sides of decimal point
-function roundToDigits(num, digits = 0, notice = NaN) {
+function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
     // For my needs digits should be 13
     const stringNum = String(num);
     if (stringNum.includes(".") && stringNum.length > 14) { 
