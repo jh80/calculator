@@ -68,6 +68,11 @@ function populateDisplay(digitStr, displayValue = "") {
 
 function activateButton (event) {
     const target = event.target;
+    if (isNaN(display.textContent)) {
+        if (target.id !== "clear") {
+            return;
+        } 
+    }
     //displayValue = display.textContent;
     if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
@@ -78,6 +83,7 @@ function activateButton (event) {
         displayValue = populateDisplay(".", displayValue);
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
+            if (display.textContent)
             num1 = Number(display.textContent);
             operator = target.textContent;
             displayValue = "";
