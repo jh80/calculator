@@ -53,6 +53,7 @@ function populateDisplay(digitStr, displayValue = "") {
         displayValue = "";
     };
     if ((digitStr === ".") && (displayValue == "")) digitStr = "0.";
+
     newDisplayValue = displayValue + digitStr;
     if (newDisplayValue.length > 13 && !digitStr.includes(".")) {
         display.textContent = tooBigMsg
@@ -107,16 +108,32 @@ function runEquationThroughCalc(target) {
     displayValue = "";
 }
 
+// Rounds number to a specified amount of digits (on both sides of decimal point
 function roundToDigits(num, digits = 0, notice = NaN) {
     // For my needs digits should be 13
     const stringNum = String(num);
-    if (stringNum.includes(".")) { 
+    if (stringNum.includes(".") && stringNum.length > 14) { 
+        let roundedStrNum;
         const parts = stringNum.split(".")
         const decimalPlaces = digits - parts[0].length;
-        return (num.toFixed(decimalPlaces));
+        roundedStrNum = String(num.toFixed(decimalPlaces));
+        // remove excess zeros - Bring this back only if I need it
+        while (roundedStrNum.slice(-1) === "0") {
+            if (roundedStrNum.slice(-1) === ".") {
+                roundedStrNum = roundedStrNum.slice(0, -1);
+                break;
+            } 
+            roundedStrNum = roundedStrNum.slice(0, -1);
+        } 
+        return Number(roundedStrNum);
     } else if (stringNum.length > digits) {
         return notice;
     } else {
         return num;
     }
 }
+
+// Take off zeros at the end of a rounded number
+// if stringNum.includes(".")
+
+// How do I want to deal with decimal point and then a zero to the left of decimal point
