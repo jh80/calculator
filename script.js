@@ -44,9 +44,11 @@ function operate(num1, operator, num2) {
             return subtract(num1,num2);
             break;
         case "x":
+        case "*":
             return multiply(num1,num2);
             break;
         case "÷":
+        case "/":
             return divide(num1,num2);
             break;
     }
@@ -166,6 +168,7 @@ function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
 // function for keydown
 function activateOnKeyDown (event) {
     const DIGITS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    const OPERATORS = ["+", "-", "*", "/"]
     const target = event.key;
     if (isNaN(display.textContent)) {
         if (target !== "c") {
@@ -176,21 +179,21 @@ function activateOnKeyDown (event) {
     if (DIGITS.includes(target)) {
         displayValue = populateDisplay(target, displayValue);
         backspace = true;
-    } else if (target === "Decimal") {
+    } else if (target === ".") {
         if (displayValue.includes(".")) {
             return;
         }
         displayValue = populateDisplay(".", displayValue);
-    } else if (target === "Add") {
+    } else if (OPERATORS.includes(target)) {
         if (num1 === undefined) {
             if (display.textContent)
             num1 = Number(display.textContent);
-            operator = "+";
+            operator = target;
             displayValue = "";
         } else {
             num2 = Number(display.textContent);
             num1 = operate(num1, operator, num2);
-            operator = target.textContent;
+            operator = target;
             if (num1 === "Attempted divide by 0") {
                 populateDisplay("Stop that!");
                 num1 = undefined;
@@ -203,7 +206,7 @@ function activateOnKeyDown (event) {
             displayValue = "";
             backspace = false;
         }
-    } else if (target === "Enter") {
+    } else if (target === "Enter" || target === "=") {
         if (num1 === undefined) {
             return;
         }
