@@ -71,6 +71,7 @@ function populateDisplay(digitStr, displayValue = "") {
     return display.textContent;
 }                 
 
+// ACTIVATEBUTTON FUNCTION
 function activateButton (event) {
     const target = event.target;
     if (isNaN(display.textContent)) {
@@ -135,8 +136,22 @@ function activateButton (event) {
         operator = "";
         populateDisplay("0");
     } else if (target.id === "backspace") {
-        if(backspace)
-        displayValue = populateDisplay(display.textContent.slice(0,-1));
+        if(backspace) {
+            displayValue = populateDisplay(display.textContent.slice(0,-1));
+        }
+    } else if (target.id === "negative") {
+        if (display.textContent.slice(0,1) === "-") {
+            display.textContent = display.textContent.slice(1);
+            displayValue = display.textContent;
+        } else {
+            if (display.textContent === "0") {
+                display.textContent = "-0";
+                displayValue = "-"
+            } else {
+                display.textContent = "-" + display.textContent;
+                displayValue = display.textContent;
+            }
+        }
     }
 }
 
