@@ -7,14 +7,21 @@ body {
     width: 300px;
     height: 400px;
     margin: auto;
+    border: 5px solid rgb(40, 70, 67);
+    border-radius: 8%;
 }
 
 #display {
     background-color: #c1bbbb;
     height: 58px;
     font-size: 40px;
-    text-align: right;
-    justify-content: flex-end;
+    border-radius: 10%;
+    margin: 10px 20px;
+    padding: 0px 10px;
+    box-shadow: inset 2px 2px gray;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 #btnContainer {
@@ -28,6 +35,35 @@ body {
 .btn {
     width: 58px;
     height: 58px;
+    border-radius: 10%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.number {
+    background-color: #73ba97;
+}
+
+.operator {
+    background-color: #749d8f;
+}
+
+#equals {
+    background-color: #57786d;
+}
+
+#clear,
+#backspace {
+    background-color: #d4fdf0;
+}
+
+#backspace {
+    font-size: 14px;
+}
+
+#negative,
+#decimalPoint {
+    background-color: #4e906f;
 }
 
 .filler {
