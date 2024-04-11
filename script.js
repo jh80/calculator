@@ -165,6 +165,7 @@ function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
 }
 // function for keydown
 function activateOnKeyDown (event) {
+    const DIGITS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     const target = event.key;
     if (isNaN(display.textContent)) {
         if (target !== "c") {
@@ -172,7 +173,7 @@ function activateOnKeyDown (event) {
         } 
     }
     //displayValue = display.textContent;
-    if (target === "1") {
+    if (DIGITS.includes(target)) {
         displayValue = populateDisplay(target, displayValue);
         backspace = true;
     } else if (target === "Decimal") {
