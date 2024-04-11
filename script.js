@@ -12,6 +12,7 @@ const displayFit = 13;
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener('click', activateButton);
+document.body.addEventListener('keydown', activateOnKeyDown);
 
 // Operator functions
 function add(num1, num2) {
@@ -49,6 +50,7 @@ function operate(num1, operator, num2) {
             return divide(num1,num2);
             break;
     }
+
 }
 
 function populateDisplay(digitStr, displayValue = "") {
@@ -161,8 +163,72 @@ function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
         return num;
     }
 }
-
-// Take off zeros at the end of a rounded number
-// if stringNum.includes(".")
-
-// How do I want to deal with decimal point and then a zero to the left of decimal point
+// function for keydown
+function activateOnKeyDown (event) {
+    const target = event.key;
+    if (isNaN(display.textContent)) {
+        if (target !== "c") {
+            return;
+        } 
+    }
+    //displayValue = display.textContent;
+    if (target === "1") {
+        displayValue = populateDisplay(target, displayValue);
+        backspace = true;
+    } else if (target === "Decimal") {
+        if (displayValue.includes(".")) {
+            return;
+        }
+        displayValue = populateDisplay(".", displayValue);
+    } else if (target === "Add") {
+        if (num1 === undefined) {
+            if (display.textContent)
+            num1 = Number(display.textContent);
+            operator = "+";
+            displayValue = "";
+        } else {
+            num2 = Number(display.textContent);
+            num1 = operate(num1, operator, num2);
+            operator = target.textContent;
+            if (num1 === "Attempted divide by 0") {
+                populateDisplay("Stop that!");
+                num1 = undefined;
+                num2 = undefined;
+                displayValue = "";
+                operator = "";
+                return;
+            }
+            populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
+            displayValue = "";
+            backspace = false;
+        }
+    } else if (target === "Enter") {
+        if (num1 === undefined) {
+            return;
+        }
+        num2 = Number(display.textContent);
+        num1 = operate(num1, operator, num2);
+        operator = "";
+        if (num1 === "Attempted divide by 0") {
+            populateDisplay("Stop that!");
+            num1 = undefined;
+            num2 = undefined;
+            displayValue = "";
+            operator = "";
+            return;
+        }
+        populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
+        num1 = undefined;
+        displayValue = "";  
+        backspace = false;    
+    } else if (target === "c") {
+        num1 = undefined;
+        num2 = undefined;
+        displayValue = "";
+        operator = "";
+        populateDisplay("0");
+    } else if (target === "Backspace") {
+        if(backspace)
+        displayValue = populateDisplay(display.textContent.slice(0,-1));
+    }
+}
