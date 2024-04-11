@@ -247,7 +247,8 @@ function activateOnKeyDown (event) {
         operator = "";
         populateDisplay("0");
     } else if (target === "Backspace") {
-        if(backspace)
-        displayValue = populateDisplay(display.textContent.slice(0,-1));
+        if(backspace) {
+            displayValue = populateDisplay(display.textContent.slice(0,-1));
+        }
     }
 }
