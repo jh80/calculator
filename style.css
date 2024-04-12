@@ -16,8 +16,8 @@ body {
     height: 58px;
     font-size: 40px;
     border-radius: 10%;
-    margin: 10px 20px;
-    padding: 0px 10px;
+    margin: 10px 15px;
+    padding: 0px 5px;
     box-shadow: inset 2px 2px gray;
     display: flex;
     align-items: center;
