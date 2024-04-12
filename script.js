@@ -162,7 +162,7 @@ function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
     if (stringNum.includes(".") && stringNum.length > 14) { 
         let roundedStrNum;
         const parts = stringNum.split(".")
-        const decimalPlaces = digits - parts[0].length;
+        const decimalPlaces = (digits-1) - parts[0].length;
         roundedStrNum = String(num.toFixed(decimalPlaces));
         return Number(roundedStrNum);
     } else if (stringNum.length > digits) {
