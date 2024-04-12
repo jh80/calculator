@@ -80,16 +80,15 @@ function activateButton (event) {
             return;
         } 
     }
-    // Check for target of event
-    if (target.className === "btn number") {
+    if (target.className === "btn number") { // For numbers
         displayValue = populateDisplay(target.textContent, displayValue);
         backspace = true;
-    } else if (target.id === "decimalPoint") {
+    } else if (target.id === "decimalPoint") { // For decimal points
         if (displayValue.includes(".")) {
             return;
         }
         displayValue = populateDisplay(".", displayValue);
-    } else if (target.className === "btn operator") {
+    } else if (target.className === "btn operator") { // For operators
         if (num1 === undefined) {
             if (display.textContent) {
             num1 = Number(display.textContent);
@@ -102,7 +101,7 @@ function activateButton (event) {
             backspace = false;
             operator = target.textContent;
         }
-    } else if (target.id === "equals") {
+    } else if (target.id === "equals") { // For equals
         if (num1 === undefined) {
             displayValue = "";
             return;
@@ -112,15 +111,15 @@ function activateButton (event) {
         displayValue = "";  
         backspace = false;
         operator = "";    
-    } else if (target.id === "clear") {
+    } else if (target.id === "clear") { // For clear
         refresh();
         populateDisplay("0");
-    } else if (target.id === "backspace") {
+    } else if (target.id === "backspace") { // For backspace
         if(backspace) {
             displayValue = populateDisplay(display.textContent.slice(0,-1));
         }
-    } else if (target.id === "negative") {
-        if (display.textContent.slice(0,1) === "-") {
+    } else if (target.id === "negative") { // For negative sign
+        if (display.textContent.includes("-")) {
             display.textContent = display.textContent.slice(1);
             displayValue = display.textContent;
         } else {
@@ -135,14 +134,7 @@ function activateButton (event) {
     }
 }
 
-// They say not to do multiple things in, I did here. it runs the right equation and displays it
-function runEquationThroughCalc(target) {
-    num2 = Number(display.textContent);
-    num1 = operate(num1, operator, num2);
-    operator = target.textContent;
-    display.textContent = num1;
-    displayValue = "";
-}
+
 
 // Rounds number to a specified amount of digits (on both sides of decimal point
 function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
