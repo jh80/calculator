@@ -97,34 +97,20 @@ function activateButton (event) {
             displayValue = "";
             }
         } else {
-            num2 = Number(display.textContent);
-            num1 = operate(num1, operator, num2);
-            operator = target.textContent;
-            if (num1 === "Attempted divide by 0") {
-                populateDisplay("Stop that!");
-                refresh();
-                return;
-            }
-            populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
+            equalOut();
             displayValue = "";
             backspace = false;
+            operator = target.textContent;
         }
     } else if (target.id === "equals") {
         if (num1 === undefined) {
             return;
         }
-        num2 = Number(display.textContent);
-        num1 = operate(num1, operator, num2);
-        operator = "";
-        if (num1 === "Attempted divide by 0") {
-            populateDisplay("Stop that!");
-            refresh();
-            return;
-        }
-        populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
+        equalOut();
         num1 = undefined;
         displayValue = "";  
-        backspace = false;    
+        backspace = false;
+        operator = "";    
     } else if (target.id === "clear") {
         refresh();
         populateDisplay("0");
@@ -243,4 +229,16 @@ function refresh () {
     num2 = undefined;
     displayValue = "";
     operator = "";  
+}
+
+// Takes the number, calculates, and outputs
+function equalOut() {
+    num2 = Number(display.textContent);
+    num1 = operate(num1, operator, num2);
+    if (num1 === "Attempted divide by 0") {
+        populateDisplay("Stop that!");
+        refresh();
+        return;
+    }
+    populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
 }
