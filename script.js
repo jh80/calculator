@@ -63,7 +63,7 @@ function populateDisplay(digitStr, displayValue = "") {
     if ((digitStr === ".") && (displayValue == "")) digitStr = "0.";
 
     newDisplayValue = displayValue + digitStr;
-    if (newDisplayValue.length > 13 && !digitStr.includes(".")) {
+    if (newDisplayValue.length > 13) {
         display.textContent = tooBigMsg
         return tooBigMsg;
     }
