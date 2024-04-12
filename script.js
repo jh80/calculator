@@ -7,7 +7,7 @@ const display = document.querySelector("#display");
 let displayValue = display.textContent;
 let backspace = true;
 
-const tooBigMsg = " #  TOO  BIG ";
+const tooBigMsg = "# TOO BIG";
 const displayFit = 13;
 // Button click event
 const btnContainer = document.querySelector("#btnContainer");
@@ -73,13 +73,14 @@ function populateDisplay(digitStr, displayValue = "") {
 
 // ACTIVATEBUTTON FUNCTION
 function activateButton (event) {
+    // Force user to clear if an alphabetical string has been displayed
     const target = event.target;
     if (isNaN(display.textContent)) {
         if (target.id !== "clear") {
             return;
         } 
     }
-    //displayValue = display.textContent;
+    // Check for target of event
     if (target.className === "btn number") {
         displayValue = populateDisplay(target.textContent, displayValue);
         backspace = true;
@@ -90,10 +91,11 @@ function activateButton (event) {
         displayValue = populateDisplay(".", displayValue);
     } else if (target.className === "btn operator") {
         if (num1 === undefined) {
-            if (display.textContent)
+            if (display.textContent) {
             num1 = Number(display.textContent);
             operator = target.textContent;
             displayValue = "";
+            }
         } else {
             num2 = Number(display.textContent);
             num1 = operate(num1, operator, num2);
@@ -192,11 +194,12 @@ function activateOnKeyDown (event) {
         displayValue = populateDisplay(".", displayValue);
     } else if (OPERATORS.includes(target)) {
         if (num1 === undefined) {
-            if (display.textContent)
-            num1 = Number(display.textContent);
-            operator = target;
-            displayValue = "";
-        } else {
+            if (display.textContent) {
+                num1 = Number(display.textContent);
+                operator = target;
+                displayValue = ""
+            }
+        } else {    
             num2 = Number(display.textContent);
             num1 = operate(num1, operator, num2);
             operator = target;
