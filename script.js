@@ -104,6 +104,7 @@ function activateButton (event) {
         }
     } else if (target.id === "equals") {
         if (num1 === undefined) {
+            displayValue = "";
             return;
         }
         equalOut();
