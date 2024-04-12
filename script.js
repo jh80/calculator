@@ -159,7 +159,7 @@ function runEquationThroughCalc(target) {
 function roundToDigits(num, digits = 0, notice = "tooManyDigits") {
     // For my needs digits should be 13
     const stringNum = String(num);
-    if (stringNum.includes(".") && stringNum.length > 14) { 
+    if (stringNum.includes(".") && stringNum.length > digits) { 
         let roundedStrNum;
         const parts = stringNum.split(".")
         const decimalPlaces = (digits-1) - parts[0].length;
