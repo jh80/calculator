@@ -100,10 +100,7 @@ function activateButton (event) {
             operator = target.textContent;
             if (num1 === "Attempted divide by 0") {
                 populateDisplay("Stop that!");
-                num1 = undefined;
-                num2 = undefined;
-                displayValue = "";
-                operator = "";
+                refresh();
                 return;
             }
             populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
@@ -119,10 +116,7 @@ function activateButton (event) {
         operator = "";
         if (num1 === "Attempted divide by 0") {
             populateDisplay("Stop that!");
-            num1 = undefined;
-            num2 = undefined;
-            displayValue = "";
-            operator = "";
+            refresh();
             return;
         }
         populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
@@ -130,10 +124,7 @@ function activateButton (event) {
         displayValue = "";  
         backspace = false;    
     } else if (target.id === "clear") {
-        num1 = undefined;
-        num2 = undefined;
-        displayValue = "";
-        operator = "";
+        refresh();
         populateDisplay("0");
     } else if (target.id === "backspace") {
         if(backspace) {
@@ -211,10 +202,7 @@ function activateOnKeyDown (event) {
             operator = target;
             if (num1 === "Attempted divide by 0") {
                 populateDisplay("Stop that!");
-                num1 = undefined;
-                num2 = undefined;
-                displayValue = "";
-                operator = "";
+                refresh();
                 return;
             }
             populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
@@ -230,10 +218,7 @@ function activateOnKeyDown (event) {
         operator = "";
         if (num1 === "Attempted divide by 0") {
             populateDisplay("Stop that!");
-            num1 = undefined;
-            num2 = undefined;
-            displayValue = "";
-            operator = "";
+            refresh();
             return;
         }
         populateDisplay(String(roundToDigits(num1, 13, tooBigMsg)));
@@ -241,14 +226,18 @@ function activateOnKeyDown (event) {
         displayValue = "";  
         backspace = false;    
     } else if (target === "c") {
-        num1 = undefined;
-        num2 = undefined;
-        displayValue = "";
-        operator = "";
+        refresh();
         populateDisplay("0");
     } else if (target === "Backspace") {
         if(backspace) {
             displayValue = populateDisplay(display.textContent.slice(0,-1));
         }
     }
+}
+
+function refresh () {
+    num1 = undefined;
+    num2 = undefined;
+    displayValue = "";
+    operator = "";  
 }
