@@ -114,7 +114,7 @@ function activateButton (target) {
     const OPERATORS = ["+", "-", "*", "/"]
     // Force user to clear if an alphabetical string has been displayed
     if (isNaN(display.textContent)) {
-        if (target.className !== "btn clear" || target !== "c") {// CHANGE TO CLASSNAME
+        if (target.id !== "clear" || target !== "c") {// CHANGE TO CLASSNAME
             return;
         } 
     }
@@ -122,7 +122,7 @@ function activateButton (target) {
     if (target.className === "btn number" || DIGITS.includes(target)) { // For numbers
         displayValue = populateDisplay(DIGITS.includes(target) ? target : target.textContent, displayValue);
         backspace = true;
-    } else if (target.className === "btn decimalPoint" || target === ".") { // For decimal points
+    } else if (target.id === "decimalPoint" || target === ".") { // For decimal points
         if (displayValue.includes(".")) {
             return;
         }
@@ -140,7 +140,7 @@ function activateButton (target) {
             backspace = false;
             operator = OPERATORS.includes(target) ? target : target.textContent;
         }
-    } else if (target.className === "btn equals" || target === "Enter" || target === "=") { // For equals
+    } else if (target.id === "equals" || target === "Enter" || target === "=") { // For equals
         if (num1 === undefined) {
             displayValue = "";
             return;
@@ -150,14 +150,14 @@ function activateButton (target) {
         displayValue = "";  
         backspace = false;
         operator = "";    
-    } else if (target.className === "btn clear" || target === "c") { // For clear
+    } else if (target.id === "clear" || target === "c") { // For clear
         refresh();
         populateDisplay("0");
-    } else if (target.className === "btn backspace" || target === "Backspace") { // For backspace
+    } else if (target.id === "backspace" || target === "Backspace") { // For backspace
         if(backspace) {
             displayValue = populateDisplay(display.textContent.slice(0,-1));
         }
-    } else if (target.className === "btn negative") { // For negative sign
+    } else if (target.id === "negative") { // For negative sign
         if (display.textContent.includes("-")) {
             display.textContent = display.textContent.slice(1);
             displayValue = display.textContent;
